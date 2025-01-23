@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_psiquiatrica/screens/tools_screen.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -38,8 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         if (data['status'] == 'success') {
-          // Redirigir a la pantalla principal
-          Navigator.pushReplacementNamed(context, '/home');
+          // Redirigir a la pantalla de herramientas
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => ToolsScreen()),
+          );
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
